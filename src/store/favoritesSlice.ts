@@ -1,0 +1,1 @@
+// Lógica de favoritos (para después) 
