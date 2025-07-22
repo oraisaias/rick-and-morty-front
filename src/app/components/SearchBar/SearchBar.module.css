@@ -9,7 +9,11 @@
     max-width: 320px;
     height: 3.5rem;
   }
-  
+  @media (max-width: 480px) {
+    .container {
+     background-color: transparent;
+    }
+  }
   .icon {
     color: #8df100;
     font-size: 18px;
@@ -24,4 +28,9 @@
     font-size: 16px;
     flex: 1;
   }
+  .input::placeholder {
+      color: var(--color-primary); /* o el verde exacto del diseño */
+    opacity: 0.7;
+  }
+  
   

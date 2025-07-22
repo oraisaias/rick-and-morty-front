@@ -9,6 +9,7 @@ import FavsBarTab from './components/FavsBar/FavsBarTab'
 import Image from 'next/image'
 import ScrollArrow from './components/ScrollArrow'
 import { useRef, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 export default function Home() {
   const gridRef = useRef<HTMLDivElement>(null)
@@ -22,15 +23,14 @@ export default function Home() {
       })
     }
   }
-
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
   const [showFavsBar, setShowFavsBar] = useState(false)
 
   return (
     <div className={styles.page}>
-      {/* Fondo visual completo */}
       <div className={styles.background}>
         <div className={styles.backgroundImage} />
-        <div className={styles.greenGrass} />
+        {!isMobile && <div className={styles.greenGrass} />}
       </div>
       <div className={styles.logoContainer}>
         <Image
@@ -41,28 +41,30 @@ export default function Home() {
           className={styles.logo}
         />
       </div>
-      {/* Contenedor central negro */}
       <div className={styles.content}>
-        {/* Aquí insertaremos componentes luego */}
+      {isMobile && <div className={styles.greenGrass} >
+        
+      </div>}
+        
         <div className={styles.detailSection}>
           <CharacterDetail />
         </div>
         <div className={styles.listSection}>
+
           <div className={styles.searchWrapper}>
             <SearchBar />
           </div>
           {/* scroll arrows */}
           <div className={styles.arrowsContainer}>
-            <div className={styles.scrollArrows}>
+            {!isMobile && <div className={styles.scrollArrows}>
               <ScrollArrow direction="up" className={styles.arrowUp} onClick={() => scroll('up')} />
               <ScrollArrow
                 direction="down"
                 className={styles.arrowDown}
                 onClick={() => scroll('down')}
               />
-            </div>
+            </div>}
             <div className={styles.cardGrid} ref={gridRef}>
-              {/* Por ahora 4 tarjetas estáticas, luego haremos mapping */}
               <CharacterCard />
               <CharacterCard />
               <CharacterCard />
@@ -73,10 +75,14 @@ export default function Home() {
               <CharacterCard />
               <CharacterCard />
             </div>
-            <FavsBarTab onClick={() => setShowFavsBar(!showFavsBar)} />
-            <FavsBar show={showFavsBar} setShow={setShowFavsBar} />
+            {!isMobile && <div className={styles.favsBarContainer}>
+              <FavsBarTab onClick={() => setShowFavsBar(!showFavsBar)} />
+              <FavsBar show={showFavsBar} setShow={setShowFavsBar} />
+            </div>}
+    
           </div>
         </div>
+        
       </div>
     </div>
   )

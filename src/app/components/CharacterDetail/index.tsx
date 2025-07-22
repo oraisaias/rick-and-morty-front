@@ -22,8 +22,7 @@ export default function CharacterDetail() {
       <div className={styles.infoOverlay}>
         <div className={styles.infoOverlayContent}> 
         <h3 className={styles.name}>Rick Sánchez</h3>
-        <p className={styles.subinfo}>Human</p>
-        <p className={styles.subinfo}>R Toxic Side</p>
+        <p className={styles.subinfo}>Human R Toxic Side</p>
         </div>
 
         <div className={styles.meta}>

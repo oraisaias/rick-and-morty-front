@@ -8,12 +8,19 @@
     padding-bottom: 0px;
     width: 40%;
     margin-bottom: 3rem;
-    max-height: 226px;
-    min-height: 226px;
+    max-height: 14.125rem;
+    min-height: 14.125rem;
     max-width: 190px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: all 0.2s ease;
 
+  }
+  @media (max-width: 480px) {
+    .card {
+      max-width: 45%;
+      min-width: 8.75rem;
+      min-height: 10.625rem;
+    }
   }
   .card:hover {
     background-color: rgba(79, 79, 79, 0.8); /* #4F4F4F al 80% */
@@ -30,13 +37,20 @@
     letter-spacing: 1px;
     height: 12%;
   }
+
   
   .image {
-    max-width: 145px;
-    height: 145px;
+    max-width: 9.063rem;
+    height: 9.063rem;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 5px;
+  }
+  @media (max-width: 480px) {
+    .image {
+      max-width: 6.25rem;
+      height: 6.25rem;
+    }
   }
   
   .like {
