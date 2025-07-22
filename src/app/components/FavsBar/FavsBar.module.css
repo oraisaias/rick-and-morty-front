@@ -1,0 +1,40 @@
+.bar {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    background-color: #4c4c4c;
+    border-radius: 12px 12px 0 0;
+    padding: 10px;
+    width: 140px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  .item {
+    background: #888;
+    color: white;
+    padding: 8px;
+    border-bottom: 1px solid #666;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .item:last-child {
+    border-bottom: none;
+  }
+  
+  .tab {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 120px;
+    background-color: #4c4c4c;
+    color: #8df100;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+  }
+  

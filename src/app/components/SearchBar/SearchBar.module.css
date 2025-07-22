@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    border: 2px solid #8df100;
+    border-radius: 6px;
+    padding: 10px 16px;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .icon {
+    color: #8df100;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #8df100;
+    font-size: 16px;
+    flex: 1;
+  }
+  

@@ -1,0 +1,75 @@
+/* src/app/page.module.css */
+
+.page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/bg-stars.png') no-repeat center center;
+    background-size: cover;
+    z-index: -2;
+  }
+  
+  .greenGrass {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background: linear-gradient(to top, #8bd400, #c7fd00);
+    z-index: -1;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1024px;
+    max-height: 720px;
+    height: 90%;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+  }
+  
+  .detailSection {
+    flex: 1;
+    background: transparent;
+  }
+  
+  .listSection {
+    flex: 1;
+    background: transparent;
+    padding: 20px;
+  }
+  
+
+  .searchWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
+  }
+  
+  @media (max-width: 480px) {
+    .cardGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

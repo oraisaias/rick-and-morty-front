@@ -1,0 +1,40 @@
+/* 1. RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 2. EVITA DESBORDAMIENTOS EN EL EJE X */
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* 3. MEJORAS PARA LA TIPOGRAFÍA Y RENDERIZADO */
+  body {
+    font-family: 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* 4. QUITA ESTILOS NATIVOS A BOTONES, INPUTS, ETC. */
+  button, input, textarea, select {
+    font: inherit;
+    background: none;
+    border: none;
+    outline: none;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
