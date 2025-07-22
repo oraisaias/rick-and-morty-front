@@ -3,13 +3,13 @@
     flex-direction: column;
     align-items: center;
     background-color: #1e1e1e;
-    border: 2px solid #8df100;
     border-radius: 16px;
     padding: 12px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     width: 40%;
     margin-bottom: 3rem;
     max-height: 226px;
+    min-height: 226px;
     max-width: 190px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   }
@@ -21,6 +21,7 @@
     margin-bottom: 8px;
     text-align: center;
     letter-spacing: 1px;
+    height: 12%;
   }
   
   .image {
@@ -33,13 +34,14 @@
   
   .like {
     display: flex;
-    font-size: 12px;
+    font-size: 16px;
     align-items: center;
     gap: 6px;
     color: white;
   }
   
   .heartIcon {
-    color: red;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   

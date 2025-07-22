@@ -16,7 +16,7 @@ export default function CharacterCard() {
         className={styles.image}
       />
       <div className={styles.like}>
-        <FaHeart className={styles.heartIcon} />
+        <Image src="/images/icons/corazon.svg" alt="Like" width={16} height={16}  className={styles.heartIcon}/> 
         <span>Like</span>
       </div>
     </div>

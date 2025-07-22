@@ -7,7 +7,8 @@ export default function CharacterDetail() {
   return (
     <div className={styles.container}>
       <div className={styles.status}>
-        <span className={styles.statusDot} /> LIVE
+        <Image src="/images/icons/live-icon.png" alt="Live" width={15} height={15} />
+        <span className={styles.statusText}>LIVE</span>
       </div>
 
       <Image
@@ -26,19 +27,19 @@ export default function CharacterDetail() {
         </div>
 
         <div className={styles.meta}>
-          <div>
+          <div className={styles.metaItem}>
             <span className={styles.label}>Origin</span>
             <span className={styles.value}>Alien Spa</span>
           </div>
-          <div>
+          <div className={styles.metaItem}>
             <span className={styles.label}>Location</span>
             <span className={styles.value}>Earth</span>
           </div>
-          <div>
+          <div className={styles.metaItem}>
             <span className={styles.label}>Gender</span>
             <span className={styles.value}>Male</span>
           </div>
-          <div>
+          <div className={styles.metaItem}>
             <span className={styles.label}>Episodes</span>
             <span className={styles.value}>132</span>
           </div>

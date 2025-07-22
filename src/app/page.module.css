@@ -6,14 +6,31 @@
     height: 100vh;
     overflow: hidden;
   }
-  
+
+  .logoContainer{
+    height: 100px;
+    margin: 0 auto;
+    max-width: 1024px;
+    margin-top: 40px;
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .logo{
+    width: auto;
+    height: 100%;
+  }
+
   .background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/assets/bg-stars.png') no-repeat center center;
+    background: url('/images/backgrounds/image.png') no-repeat center bottom;
+
     background-size: cover;
     z-index: -2;
   }
@@ -21,13 +38,14 @@
   .greenGrass {
     position: absolute;
     bottom: 0;
-    height: 80px;
+    height: 10rem;
     width: 100%;
     background: linear-gradient(to top, #8bd400, #c7fd00);
     z-index: -1;
   }
   
   .content {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -36,7 +54,6 @@
     max-height: 720px;
     height: 90%;
     margin: auto;
-    margin-top: 40px;
     border-radius: 20px;
     background-color: #1e1e1e;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
