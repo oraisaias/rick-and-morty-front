@@ -2,11 +2,12 @@
     display: flex;
     align-items: center;
     background-color: #1e1e1e;
-    border: 2px solid #8df100;
+    border: 1px solid #8df100;
     border-radius: 6px;
     padding: 10px 16px;
     width: 100%;
     max-width: 320px;
+    height: 3.5rem;
   }
   
   .icon {

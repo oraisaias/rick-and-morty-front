@@ -69,24 +69,64 @@
     flex: 1;
     background: transparent;
     padding: 20px;
+    padding-right: 10px;
+    height: 100%;
   }
   
 
   .searchWrapper {
     display: flex;
     justify-content: center;
+    align-items: center; 
     margin-bottom: 20px;
+    height: 13%;
+    padding-top: 1rem;
+
   }
   
   .cardGrid {
+    padding-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around
+    justify-content: space-around;
+    position: relative;
+    padding-right: 1rem;
+    height: 100%;
+    z-index: inherit;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
-  
+  .arrowsContainer{
+    position: relative;
+    height: 87%;
+    width: 100%;
+  }
+  .scrollArrows{
+    padding-top: 2rem;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .arrowUp{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+  .arrowDown{
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    bottom: 2rem;
+  }
   @media (max-width: 480px) {
     .cardGrid {
       grid-template-columns: 1fr;
     }
   }
+  
+
   

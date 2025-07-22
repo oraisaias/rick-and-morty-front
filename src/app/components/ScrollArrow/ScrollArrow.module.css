@@ -1,0 +1,20 @@
+.arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: #666;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow:hover {
+    background-color: #8df100;
+    color: #000;
+  }
+  
