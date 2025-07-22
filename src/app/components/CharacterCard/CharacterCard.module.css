@@ -12,6 +12,13 @@
     min-height: 226px;
     max-width: 190px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+
+  }
+  .card:hover {
+    background-color: rgba(79, 79, 79, 0.8); /* #4F4F4F al 80% */
+    box-shadow: 15px 15px 30px #191919;
+    transform: translateY(-2px); /* opcional: sutil elevación */
   }
   
   .name {
@@ -43,5 +50,10 @@
   .heartIcon {
     width: 1.5rem;
     height: 1.5rem;
+    color: white;
+    transition: color 0.2s;
+  }
+  .heartActive {
+    color: #E40000;
   }
   

@@ -2,9 +2,10 @@
 
 import styles from './CharacterCard.module.css'
 import Image from 'next/image'
-import { FaHeart } from 'react-icons/fa'
-
+import Heart from './heart.svg'
+import React, { useState } from 'react';
 export default function CharacterCard() {
+  const [liked, setLiked] = useState(false);
   return (
     <div className={styles.card}>
       <h3 className={styles.name}>RICK</h3>
@@ -15,8 +16,8 @@ export default function CharacterCard() {
         height={145}
         className={styles.image}
       />
-      <div className={styles.like}>
-        <Image src="/images/icons/corazon.svg" alt="Like" width={16} height={16}  className={styles.heartIcon}/> 
+      <div className={styles.like} onClick={() => setLiked(l => !l)} style={{cursor: 'pointer'}}>
+        <Heart width={16} height={16} className={liked ? `${styles.heartIcon} ${styles.heartActive}` : styles.heartIcon} />
         <span>Like</span>
       </div>
     </div>

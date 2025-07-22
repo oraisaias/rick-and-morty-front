@@ -1,22 +1,23 @@
 .bar {
     position: absolute;
-    bottom: 60px;
-    right: 20px;
-    background-color: #4c4c4c;
+    right: calc(50% - 6.125rem);
+    bottom: -10%;
+    background-color: var(--color-quinary);
     border-radius: 12px 12px 0 0;
-    padding: 10px;
-    width: 140px;
+    padding: 10px 0;
+    width: 12.5rem;
     z-index: 10;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
   }
   
   .item {
-    background: #888;
+    background: var(--gray-background);
     color: white;
     padding: 8px;
-    border-bottom: 1px solid #666;
-    text-align: center;
-    font-weight: bold;
+    padding-left: 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    margin-bottom: 0.3rem;
   }
   
   .item:last-child {
@@ -28,11 +29,30 @@
     bottom: 0;
     right: calc(50% - 6.125rem);
     width: 12.5rem;
-    background-color: #4c4c4c;
+    background-color: var(--color-quinary);
     text-align: center;
     padding: 8px;
     border-radius: 8px 8px 0 0;
     cursor: pointer;
     z-index: 5;
   }
+  .tab:hover {
+    color: var(--color-primary);
+  }
   
+  .show {
+    animation: slideIn 0.3s ease-in-out;
+  }
+  .hide {
+    bottom: -100%;
+    }
+
+  @keyframes slideIn {
+    from {
+      bottom: -100%;
+    }
+    to {
+      bottom: 0%;
+    }
+  }
+

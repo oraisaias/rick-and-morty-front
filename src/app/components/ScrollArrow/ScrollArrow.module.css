@@ -2,7 +2,7 @@
     width: 32px;
     height: 32px;
     border-radius: 4px;
-    background-color: #666;
+    background-color: var(--color-quaternary);
     color: white;
     font-size: 16px;
     border: none;
@@ -14,7 +14,15 @@
   }
   
   .arrow:hover {
-    background-color: #8df100;
-    color: #000;
+    color: var(--color-primary);
+  }
+  .arrow:active {
+    background-color: var(--color-quinary);
+  }
+  .arrow:hover svg {
+    color: var(--color-primary);
+  }
+  .arrow:hover svg path {
+    fill: currentColor;
   }
   

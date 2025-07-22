@@ -1,1 +1,10 @@
 /* Variables CSS */ 
+:root {
+  --color-primary: #76DD00;
+  --color-secondary: #1C1C1C;
+  --color-tertiary: #5B5454;
+  --color-quaternary: rgba(123, 123, 123, 0.7);
+  --color-quinary: rgba(91, 84, 84, 1);
+  --border-color: rgba(73, 73, 73, 1);
+  --gray-background: rgba(156, 156, 156, 1);
+} 

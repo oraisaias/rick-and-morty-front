@@ -8,7 +8,7 @@ import FavsBar from './components/FavsBar'
 import FavsBarTab from './components/FavsBar/FavsBarTab'
 import Image from 'next/image'
 import ScrollArrow from './components/ScrollArrow'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export default function Home() {
   const gridRef = useRef<HTMLDivElement>(null)
@@ -22,6 +22,8 @@ export default function Home() {
       })
     }
   }
+
+  const [showFavsBar, setShowFavsBar] = useState(false)
 
   return (
     <div className={styles.page}>
@@ -71,8 +73,8 @@ export default function Home() {
               <CharacterCard />
               <CharacterCard />
             </div>
-            <FavsBarTab />
-
+            <FavsBarTab onClick={() => setShowFavsBar(!showFavsBar)} />
+            <FavsBar show={showFavsBar} setShow={setShowFavsBar} />
           </div>
         </div>
       </div>
