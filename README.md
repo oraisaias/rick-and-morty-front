@@ -4,6 +4,12 @@ Este proyecto fue desarrollado como parte de una prueba técnica para una vacant
 <p align="center">
   <img src="/public/images/image.png" alt="Preview del proyecto" width="500" />
 </p>
+
+
+🚀 **Demo online:**  
+https://rick-and-morty-front-xi.vercel.app
+
+
 ## 📦 Instrucciones para levantar el proyecto
 
 Clona el repositorio:
