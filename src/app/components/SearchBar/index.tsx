@@ -2,7 +2,7 @@
 
 import styles from './SearchBar.module.css'
 import { useState } from 'react'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaRegUser } from 'react-icons/fa'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
@@ -17,6 +17,8 @@ export default function SearchBar() {
         onChange={(e) => setQuery(e.target.value)}
         className={styles.input}
       />
+      <FaRegUser className={styles.userIcon} />
+
     </div>
   )
 }
