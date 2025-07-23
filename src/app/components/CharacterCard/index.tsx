@@ -14,6 +14,7 @@ import {
 import { useSelector } from 'react-redux'
 
 export default function CharacterCard({ character }: { character: Character }) {
+  
   const likedCharacters = useSelector((state: RootState) => state.characters.likedCharacters)
   const isLiked = likedCharacters.some((likedCharacter) => likedCharacter.id === character.id)
   const dispatch = useAppDispatch()
@@ -26,6 +27,7 @@ export default function CharacterCard({ character }: { character: Character }) {
   }
 
   return (
+    //quiero un test que mida que se rendericen 2 de estos cards
     <div role="button" tabIndex={0} className={styles.card} onClick={() => dispatch(setSelectedCharacter(character))}>
       <h3 className={styles.name}>{character?.name}</h3>
       <Image
@@ -36,6 +38,7 @@ export default function CharacterCard({ character }: { character: Character }) {
         className={styles.image}
       />
       <div
+        
         className={styles.like}
         onClick={(e) => {
           e.stopPropagation()

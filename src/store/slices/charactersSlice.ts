@@ -1,33 +1,27 @@
-// src/store/slices/charactersSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { Character, getCharacters } from 'rickmortyapi'
 
+interface CharactersState {
+  items: Character[]
+  selectedCharacter: Character | null
+  likedCharacters: Character[]
+  searchResults: Character[]
+  loading: boolean
+  error: string | null
+}
 
-  
-  interface CharactersState {
-    items: Character[],
-    selectedCharacter: Character | null,
-    likedCharacters: Character[],
-    searchResults: Character[],
-    loading: boolean
-    error: string | null
-  }
-
-export const fetchCharacters = createAsyncThunk(
-  'characters/fetchCharacters',
-  async () => {
-    const response = await getCharacters()
-    return response.data.results
-  }
-)
+export const fetchCharacters = createAsyncThunk('characters/fetchCharacters', async () => {
+  const response = await getCharacters()
+  return response.data.results
+})
 const initialState: CharactersState = {
-    items: [],
-    selectedCharacter: null,
-    searchResults: [],
-    likedCharacters: [],
-    loading: false,
-    error: null
-  }
+  items: [],
+  selectedCharacter: null,
+  searchResults: [],
+  likedCharacters: [],
+  loading: false,
+  error: null,
+}
 const charactersSlice = createSlice({
   name: 'characters',
   initialState,
@@ -41,7 +35,9 @@ const charactersSlice = createSlice({
       }
     },
     removeLikedCharacter: (state, action) => {
-      state.likedCharacters = state.likedCharacters.filter(character => character.id !== action.payload.id)
+      state.likedCharacters = state.likedCharacters.filter(
+        (character) => character.id !== action.payload.id,
+      )
     },
     nextCharacter: (state) => {
       state.selectedCharacter = state.items[state.selectedCharacter?.id ?? 0 + 1] ?? null
@@ -50,7 +46,9 @@ const charactersSlice = createSlice({
       state.selectedCharacter = state.items[state.selectedCharacter?.id ?? 0 - 1] ?? null
     },
     searchCharacter: (state, action) => {
-      const characters = state.items.filter(character => character.name.toLowerCase().includes(action.payload.toLowerCase()))
+      const characters = state.items.filter((character) =>
+        character.name.toLowerCase().includes(action.payload.toLowerCase()),
+      )
       if (characters.length > 0) {
         if (characters.length === 1) {
           state.selectedCharacter = characters[0]
@@ -59,7 +57,7 @@ const charactersSlice = createSlice({
       } else {
         state.searchResults = []
       }
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -76,8 +74,15 @@ const charactersSlice = createSlice({
         state.loading = false
         state.error = action.error.message ?? 'Error fetching characters'
       })
-  }
+  },
 })
-
-export const { setSelectedCharacter, addLikedCharacter, removeLikedCharacter, nextCharacter, previousCharacter, searchCharacter } = charactersSlice.actions
+export const {
+  setSelectedCharacter,
+  addLikedCharacter,
+  removeLikedCharacter,
+  nextCharacter,
+  previousCharacter,
+  searchCharacter,
+} = charactersSlice.actions
 export default charactersSlice.reducer
+export type { CharactersState }

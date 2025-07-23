@@ -1,1 +1,0 @@
-// Función fetcher utilitaria 

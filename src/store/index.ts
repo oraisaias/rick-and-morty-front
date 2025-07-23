@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import charactersReducer from './slices/charactersSlice';
-import favoritesReducer from './slices/favoritesSlice';
 import { useDispatch } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
     characters: charactersReducer,
-    favorites: favoritesReducer,
   },
 });
 

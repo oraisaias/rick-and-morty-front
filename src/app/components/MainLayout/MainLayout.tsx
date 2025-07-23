@@ -3,16 +3,22 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import styles from './MainLayout.module.css'
 import { CardGrid, FavsBar, FavsBarTab, ScrollArrow, SearchBar, CharacterDetail } from '../'
-import { useAppDispatch } from '@/store'
+import { RootState, useAppDispatch } from '@/store'
 import {
   fetchCharacters,
   nextCharacter,
   previousCharacter,
 } from '@/store/slices/charactersSlice'
+import { useSelector } from 'react-redux'
 
 export default function Layout() {
   const gridRef = useRef<HTMLDivElement>(null)
   const dispatch = useAppDispatch()
+  
+  const [showFavsBar, setShowFavsBar] = useState(false)
+  const selectedCharacter = useSelector((state: RootState) => state.characters.selectedCharacter)
+
+
   const scroll = (direction: 'up' | 'down') => {
     if (gridRef.current) {
       const scrollAmount = 200
@@ -22,7 +28,6 @@ export default function Layout() {
       })
     }
   }
-  const [showFavsBar, setShowFavsBar] = useState(false)
   useEffect(() => {
     dispatch(fetchCharacters())
   }, [dispatch])
@@ -67,7 +72,7 @@ export default function Layout() {
               onClick={() => dispatch(nextCharacter())}
             />
           </div>
-          <CharacterDetail />
+          <CharacterDetail selectedCharacter={selectedCharacter} />
         </div>
         <div className={styles.listSection}>
           <div className={styles.searchWrapper}>

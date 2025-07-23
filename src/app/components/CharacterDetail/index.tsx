@@ -1,12 +1,14 @@
 'use client'
 
-import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { RootState } from '@/store'
 import styles from './CharacterDetail.module.css'
+import { Character } from 'rickmortyapi'
 
-export default function CharacterDetail() {
-  const selectedCharacter = useSelector((state: RootState) => state.characters.selectedCharacter)
+interface CharacterDetailProps {
+  selectedCharacter: Character | null
+}
+
+export default function CharacterDetail({ selectedCharacter }: CharacterDetailProps) {
   return (
     <div className={styles.container}>
       <div className={styles.status}>
@@ -41,8 +43,8 @@ export default function CharacterDetail() {
 
         <div className={styles.meta}>
           <div className={styles.metaItem}>
-            <span className={styles.label}>Origin</span>
-            <span className={styles.value}>{selectedCharacter?.origin?.name}</span>
+            <span data-testid="origin-label" className={styles.label}>Origin</span>
+            <span data-testid="origin-value" className={styles.value}>{selectedCharacter?.origin?.name}</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.label}>Location</span>
