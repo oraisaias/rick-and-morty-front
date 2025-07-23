@@ -22,6 +22,9 @@
     border: 1px solid var(--border-color);
     text-align: left;
     margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .item:last-child {

@@ -12,13 +12,14 @@ import Image from 'next/image'
 import ScrollArrow from './ScrollArrow'
 import { useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { useAppDispatch } from '@/store'
+import { RootState, useAppDispatch } from '@/store'
 import { fetchCharacters } from '@/store/slices/charactersSlice'
+import { useSelector } from 'react-redux'
 
 export default function Main() {
   const gridRef = useRef<HTMLDivElement>(null)
   const dispatch = useAppDispatch()
-
+  const characters = useSelector((state: RootState) => state.characters.items)
   const scroll = (direction: 'up' | 'down') => {
     if (gridRef.current) {
       const scrollAmount = 200
@@ -34,7 +35,6 @@ export default function Main() {
   useEffect(() => {
     dispatch(fetchCharacters())
   }, [dispatch])
-
   return (
     <div className={styles.page}>
       {/* Fondo visual completo */}
@@ -103,15 +103,10 @@ export default function Main() {
               </div>
             )}
             <div className={styles.cardGrid} ref={gridRef}>
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
-              <CharacterCard />
+              {characters.map((character) => (
+                <CharacterCard key={character.id} character={character} />
+              ))}
+             
             </div>
             {!isMobile && (
               <div className={styles.favsBarContainer}>

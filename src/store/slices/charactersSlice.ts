@@ -1,14 +1,13 @@
 // src/store/slices/charactersSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getCharacters } from 'rickmortyapi'
+import { Character, getCharacters } from 'rickmortyapi'
 
-type Character = {
-  id: number
-  name?: string
-}
+
   
   interface CharactersState {
-    items: Character[]
+    items: Character[],
+    selectedCharacter: Character | null,
+    likedCharacters: Character[],
     loading: boolean
     error: string | null
   }
@@ -16,22 +15,31 @@ type Character = {
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',
   async () => {
-    console.log("fetching characters")
     const response = await getCharacters()
-    console.log("response", response)
-    // La API retorna { data: { results: [...] }, ... }
     return response.data.results
   }
 )
 const initialState: CharactersState = {
     items: [],
+    selectedCharacter: null,
+    likedCharacters: [],
     loading: false,
     error: null
   }
 const charactersSlice = createSlice({
   name: 'characters',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCharacter: (state, action) => {
+      state.selectedCharacter = action.payload
+    },
+    addLikedCharacter: (state, action) => {
+      state.likedCharacters.push(action.payload)
+    },
+    removeLikedCharacter: (state, action) => {
+      state.likedCharacters = state.likedCharacters.filter(character => character.id !== action.payload.id)
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCharacters.pending, (state) => {
@@ -40,6 +48,7 @@ const charactersSlice = createSlice({
       })
       .addCase(fetchCharacters.fulfilled, (state, action) => {
         state.items = action.payload ?? []
+        state.selectedCharacter = action.payload?.[0] ?? null
         state.loading = false
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
@@ -49,4 +58,5 @@ const charactersSlice = createSlice({
   }
 })
 
+export const { setSelectedCharacter, addLikedCharacter, removeLikedCharacter } = charactersSlice.actions
 export default charactersSlice.reducer

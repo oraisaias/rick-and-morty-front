@@ -30,6 +30,8 @@
   
   .name {
     font-size: 12px;
+    text-transform: uppercase;
+
     font-weight: 500;
     color: white;
     margin-bottom: 8px;
