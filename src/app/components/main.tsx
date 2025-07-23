@@ -13,7 +13,7 @@ import ScrollArrow from './ScrollArrow'
 import { useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { RootState, useAppDispatch } from '@/store'
-import { fetchCharacters } from '@/store/slices/charactersSlice'
+import { fetchCharacters, nextCharacter, previousCharacter } from '@/store/slices/charactersSlice'
 import { useSelector } from 'react-redux'
 
 export default function Main() {
@@ -30,6 +30,8 @@ export default function Main() {
     }
   }
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
+  const searchResults = useSelector((state: RootState) => state.characters.searchResults)
+  const isOnlyOneResult = searchResults.length === 1 
   const [showFavsBar, setShowFavsBar] = useState(false)
 
   useEffect(() => {
@@ -69,16 +71,16 @@ export default function Main() {
         )}
 
         <div className={styles.detailSection}>
-          {isMobile &&  <ScrollArrow
+          {isMobile && !isOnlyOneResult &&  <ScrollArrow
             direction="up"
             className={`${styles.arrowUp} ${styles.arrowUpMobile}`}
-            onClick={() => scroll('up')}
+            onClick={() => dispatch(previousCharacter())}
           />}
-          {isMobile && 
+          {isMobile && !isOnlyOneResult && 
           <ScrollArrow
             direction="down"
             className={`${styles.arrowDown} ${styles.arrowDownMobile}`}
-            onClick={() => scroll('down')}
+            onClick={() => dispatch(nextCharacter())}
           />}
           <CharacterDetail />
         </div>
@@ -88,7 +90,7 @@ export default function Main() {
           </div>
           {/* scroll arrows */}
           <div className={styles.arrowsContainer}>
-            {!isMobile && (
+            {!isMobile && !isOnlyOneResult && (
               <div className={styles.scrollArrows}>
                 <ScrollArrow
                   direction="up"
@@ -103,9 +105,15 @@ export default function Main() {
               </div>
             )}
             <div className={styles.cardGrid} ref={gridRef}>
-              {characters.map((character) => (
-                <CharacterCard key={character.id} character={character} />
-              ))}
+              {searchResults.length > 0 ? (
+                searchResults.map((character) => (
+                  <CharacterCard key={character.id} character={character} />
+                ))
+              ) : (
+                characters.map((character) => (
+                  <CharacterCard key={character.id} character={character} />
+                ))
+              )}
              
             </div>
             {!isMobile && (

@@ -8,6 +8,7 @@ import { Character, getCharacters } from 'rickmortyapi'
     items: Character[],
     selectedCharacter: Character | null,
     likedCharacters: Character[],
+    searchResults: Character[],
     loading: boolean
     error: string | null
   }
@@ -22,6 +23,7 @@ export const fetchCharacters = createAsyncThunk(
 const initialState: CharactersState = {
     items: [],
     selectedCharacter: null,
+    searchResults: [],
     likedCharacters: [],
     loading: false,
     error: null
@@ -34,11 +36,30 @@ const charactersSlice = createSlice({
       state.selectedCharacter = action.payload
     },
     addLikedCharacter: (state, action) => {
-      state.likedCharacters.push(action.payload)
+      if (state.likedCharacters.length < 4) {
+        state.likedCharacters.push(action.payload)
+      }
     },
     removeLikedCharacter: (state, action) => {
       state.likedCharacters = state.likedCharacters.filter(character => character.id !== action.payload.id)
     },
+    nextCharacter: (state) => {
+      state.selectedCharacter = state.items[state.selectedCharacter?.id ?? 0 + 1] ?? null
+    },
+    previousCharacter: (state) => {
+      state.selectedCharacter = state.items[state.selectedCharacter?.id ?? 0 - 1] ?? null
+    },
+    searchCharacter: (state, action) => {
+      const characters = state.items.filter(character => character.name.toLowerCase().includes(action.payload.toLowerCase()))
+      if (characters.length > 0) {
+        if (characters.length === 1) {
+          state.selectedCharacter = characters[0]
+        }
+        state.searchResults = characters
+      } else {
+        state.searchResults = []
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -58,5 +79,5 @@ const charactersSlice = createSlice({
   }
 })
 
-export const { setSelectedCharacter, addLikedCharacter, removeLikedCharacter } = charactersSlice.actions
+export const { setSelectedCharacter, addLikedCharacter, removeLikedCharacter, nextCharacter, previousCharacter, searchCharacter } = charactersSlice.actions
 export default charactersSlice.reducer
