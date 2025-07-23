@@ -1,29 +1,20 @@
 'use client'
 
-import { searchCharacter } from '@/store/slices/charactersSlice'
-import styles from './SearchBar.module.css'
-import { useState, useEffect } from 'react'
-import { FaSearch, FaRegUser } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+import { FaRegUser, FaSearch } from 'react-icons/fa'
+
+import { useDebounce } from '@/hooks/useDebounce'
 import { useAppDispatch } from '@/store'
+import { searchCharacter } from '@/store/slices/charactersSlice'
+
+import styles from './SearchBar.module.css'
 
 export default function SearchBar() {
-  const [query, setQuery] = useState('')
-  const [debouncedQuery, setDebouncedQuery] = useState(query)
   const dispatch = useAppDispatch()
-  // Debounce effect
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedQuery(query)
-    }, 1000) // 500ms de espera
-
-    return () => {
-      clearTimeout(handler)
-    }
-  }, [query])
+  const [query, setQuery] = useState('')
+  const debouncedQuery = useDebounce(query, 1000)
 
   useEffect(() => {
-    // Aquí puedes hacer la búsqueda o dispatch
-    console.log({debouncedQuery})
       dispatch(searchCharacter(debouncedQuery))
   }, [debouncedQuery, dispatch])
 
@@ -32,6 +23,7 @@ export default function SearchBar() {
       <FaSearch className={styles.icon} />
       <input
         type="text"
+        aria-label="Search characters"
         placeholder="Find your character..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}

@@ -1,4 +1,16 @@
-/* src/app/page.module.css */
+.cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    padding: 0 1.5rem;
+    padding-top: 1rem;
+    height: 100%;
+    z-index: inherit;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  /* src/app/page.module.css */
 
 .page {
   position: relative;
@@ -101,10 +113,23 @@
 
   z-index: -1;
 }
+.greenGrassShow{
+  display: block;
+}
+.greenGrassHide{
+  display: none;
+}
+
 @media (max-width: 480px) {
   .greenGrass {
     height: 12%;
     position: relative;
+  }
+  .greenGrassShow{
+    display: none;
+  }
+  .greenGrassHide{
+    display: block;
   }
 }
 .listSection {
@@ -136,21 +161,7 @@
  
 }
 
-.cardGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  position: relative;
-  padding: 0 1.5rem;
-  padding-top: 1rem;
-  height: 100%;
-  z-index: inherit;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-@media (max-width: 480px) {
-  
-}
+
 .arrowsContainer {
   position: relative;
   height: 87%;
@@ -164,6 +175,18 @@
   bottom: 0;
   right: 0;
 }
+.scrollArrowsMobile{
+  display: none;
+}
+@media (max-width: 480px) {
+  .scrollArrows {
+    display: none;
+  }
+  .scrollArrowsMobile{
+    display: block;
+  }
+}
+
 
 .arrowUp {
   position: absolute;
@@ -206,6 +229,11 @@
   left: 0;
   right: 0;
   z-index: 1000;
+}
+@media (max-width: 480px) {
+  .favsBarContainer{
+    display: none;
+  }
 }
 .favsBarTab {
   position: absolute;
