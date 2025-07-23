@@ -1,9 +1,9 @@
 'use client'
 
-import styles from './CharacterDetail.module.css'
-import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 import { RootState } from '@/store'
+import styles from './CharacterDetail.module.css'
 
 export default function CharacterDetail() {
   const selectedCharacter = useSelector((state: RootState) => state.characters.selectedCharacter)
@@ -16,6 +16,7 @@ export default function CharacterDetail() {
               ? '/images/icons/live-icon.png'
               : '/images/icons/dead-icon.png'
           }
+          aria-label="Live"
           alt="Live"
           width={15}
           height={15}
@@ -26,16 +27,17 @@ export default function CharacterDetail() {
       <Image
         src={selectedCharacter?.image ?? 'https://rickandmortyapi.com/api/character/avatar/1.jpeg'}
         alt="Character"
+        aria-label="Character image"
         width={300}
         height={400}
         className={styles.image}
       />
 
-      <div className={styles.infoOverlay}>
-        <div className={styles.infoOverlayContent}>
-          <h3 className={styles.name}>{selectedCharacter?.name}</h3>
+      <section aria-labelledby="character-name" className={styles.infoOverlay}>
+        <header className={styles.infoOverlayContent}>
+          <h2 id="character-name" className={styles.name}>{selectedCharacter?.name}</h2>
           <p className={styles.subinfo}>{selectedCharacter?.species}</p>
-        </div>
+        </header>
 
         <div className={styles.meta}>
           <div className={styles.metaItem}>
@@ -55,7 +57,7 @@ export default function CharacterDetail() {
             <span className={styles.value}>{selectedCharacter?.episode.length}</span>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

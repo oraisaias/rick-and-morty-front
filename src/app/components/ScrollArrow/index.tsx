@@ -18,7 +18,7 @@ export default function ScrollArrow({ direction, onClick, className }: ScrollArr
     return null
   }
   return (
-    <button className={`${styles.arrow} ${className}`} onClick={onClick}>
+    <button role="button" aria-label={`Scroll ${direction}`} className={`${styles.arrow} ${className}`} onClick={onClick}>
       {direction === 'up'
         ? <ChevronUp width={16} height={16} />
         : <ChevronDown width={16} height={16} />

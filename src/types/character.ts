@@ -1,1 +1,0 @@
-// Tipado de personaje 
