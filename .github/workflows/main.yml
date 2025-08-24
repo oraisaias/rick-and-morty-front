@@ -16,5 +16,7 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: "run tests"
         run: npm test
+      - name: "run lint"
+        run: npm run lint
       - name: "muestra el contenido del directorio"
         run: ls -la
