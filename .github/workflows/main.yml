@@ -1,0 +1,11 @@
+name: lo que queramos
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  platzi:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: "Hello world"
+        run: echo "hello worldd"
+        
