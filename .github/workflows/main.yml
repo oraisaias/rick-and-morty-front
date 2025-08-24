@@ -1,10 +1,13 @@
-name: lo que queramos
+name: Rick and Morty CI/CD
 on:
   push:
     branches: [ "main" ]
 jobs:
   platzi:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
     steps: 
       - name: "checkout"
         uses: actions/checkout@v4
